@@ -12,8 +12,10 @@ script = ExtResource("1_rkbax")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_oul6g")
 animation = &"idle"
-frame_progress = 0.9578083
+frame_progress = 0.40420985
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 24.5)
 shape = SubResource("RectangleShape2D_kqu6x")
+
+[node name="PlayerStateMachine" type="Node" parent="."]
