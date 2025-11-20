@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1r2wo7a355pn"
-path="res://.godot/imported/character_green_duck.png-6b63311d1dfa10eb0d7c9127a0d62c6b.ctex"
+uid="uid://dwifrbiqb3hpa"
+path="res://.godot/imported/character_green_jump.png-1eb564b532abef84e2427991073c02e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Characters/Default/character_green_duck.png"
-dest_files=["res://.godot/imported/character_green_duck.png-6b63311d1dfa10eb0d7c9127a0d62c6b.ctex"]
+source_file="res://player/green/character_green_jump.png"
+dest_files=["res://.godot/imported/character_green_jump.png-1eb564b532abef84e2427991073c02e5.ctex"]
 
 [params]
 

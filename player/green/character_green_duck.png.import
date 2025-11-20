@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x1wfirl5s013"
-path="res://.godot/imported/character_green_climb_a.png-33f17ba1a18a78f47c00ff26080b3a2f.ctex"
+uid="uid://1r2wo7a355pn"
+path="res://.godot/imported/character_green_duck.png-a04e2ae9cdf2b3846c86654bee24056f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Characters/Default/character_green_climb_a.png"
-dest_files=["res://.godot/imported/character_green_climb_a.png-33f17ba1a18a78f47c00ff26080b3a2f.ctex"]
+source_file="res://player/green/character_green_duck.png"
+dest_files=["res://.godot/imported/character_green_duck.png-a04e2ae9cdf2b3846c86654bee24056f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwifrbiqb3hpa"
-path="res://.godot/imported/character_green_jump.png-6cc76d998e3247c9e1642ba5cb9eb42c.ctex"
+uid="uid://b3js77mbdwt61"
+path="res://.godot/imported/character_green_walk_b.png-3b13b10c35c58af3e21761c9503adc0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Characters/Default/character_green_jump.png"
-dest_files=["res://.godot/imported/character_green_jump.png-6cc76d998e3247c9e1642ba5cb9eb42c.ctex"]
+source_file="res://player/green/character_green_walk_b.png"
+dest_files=["res://.godot/imported/character_green_walk_b.png-3b13b10c35c58af3e21761c9503adc0d.ctex"]
 
 [params]
 

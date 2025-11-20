@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn3mjtpi1knnn"
-path="res://.godot/imported/character_green_hit.png-1dd04db54629dcb790d5a24ec48bc1c5.ctex"
+uid="uid://1wlhoj71ayki"
+path="res://.godot/imported/character_green_walk_a.png-402f8da7ace2fb478f8eaf5e5327693b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Characters/Default/character_green_hit.png"
-dest_files=["res://.godot/imported/character_green_hit.png-1dd04db54629dcb790d5a24ec48bc1c5.ctex"]
+source_file="res://player/green/character_green_walk_a.png"
+dest_files=["res://.godot/imported/character_green_walk_a.png-402f8da7ace2fb478f8eaf5e5327693b.ctex"]
 
 [params]
 

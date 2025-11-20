@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1wlhoj71ayki"
-path="res://.godot/imported/character_green_walk_a.png-b1c370d2a4aedc10fb827f9397fe6a19.ctex"
+uid="uid://ctj06a6xabjga"
+path="res://.godot/imported/character_green_idle.png-7c9c8b1b9766acbda3f49c1000f2432a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Characters/Default/character_green_walk_a.png"
-dest_files=["res://.godot/imported/character_green_walk_a.png-b1c370d2a4aedc10fb827f9397fe6a19.ctex"]
+source_file="res://player/green/character_green_idle.png"
+dest_files=["res://.godot/imported/character_green_idle.png-7c9c8b1b9766acbda3f49c1000f2432a.ctex"]
 
 [params]
 
