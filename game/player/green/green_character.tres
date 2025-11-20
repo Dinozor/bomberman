@@ -1,0 +1,76 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cqfi15u10qqc5"]
+
+[ext_resource type="Texture2D" uid="uid://dxab7y6vclolj" path="res://game/player/green/character_green_front.png" id="1_4q53v"]
+[ext_resource type="Texture2D" uid="uid://ctj06a6xabjga" path="res://game/player/green/character_green_idle.png" id="1_agpwx"]
+[ext_resource type="Texture2D" uid="uid://x1wfirl5s013" path="res://game/player/green/character_green_climb_a.png" id="1_thikn"]
+[ext_resource type="Texture2D" uid="uid://bn3mjtpi1knnn" path="res://game/player/green/character_green_hit.png" id="2_j1ray"]
+[ext_resource type="Texture2D" uid="uid://1r2wo7a355pn" path="res://game/player/green/character_green_duck.png" id="2_nf416"]
+[ext_resource type="Texture2D" uid="uid://dqr50f7aacma" path="res://game/player/green/character_green_climb_b.png" id="2_q54wv"]
+[ext_resource type="Texture2D" uid="uid://dwifrbiqb3hpa" path="res://game/player/green/character_green_jump.png" id="7_q54wv"]
+[ext_resource type="Texture2D" uid="uid://1wlhoj71ayki" path="res://game/player/green/character_green_walk_a.png" id="7_ywfjn"]
+[ext_resource type="Texture2D" uid="uid://b3js77mbdwt61" path="res://game/player/green/character_green_walk_b.png" id="8_auvy7"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_thikn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q54wv")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4q53v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nf416")
+}],
+"loop": true,
+"name": &"duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j1ray")
+}],
+"loop": true,
+"name": &"hits",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_agpwx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_q54wv")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ywfjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_auvy7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

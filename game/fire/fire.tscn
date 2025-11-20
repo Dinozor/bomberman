@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://t6axiobvl53q"]
+
+[ext_resource type="Texture2D" uid="uid://cj7d3r33uyo3d" path="res://game/fire/fireball.png" id="1_wdmek"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6kfu"]
+radius = 16.0
+
+[node name="Fire" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wdmek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q6kfu")

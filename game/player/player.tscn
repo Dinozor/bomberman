@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://clu31uyaexubi"]
+
+[ext_resource type="SpriteFrames" uid="uid://cqfi15u10qqc5" path="res://game/player/green/green_character.tres" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://brsk7rihey1qp" path="res://game/player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://c6ad0t8k1r1ka" path="res://game/player/player_state_machine.gd" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://bxry0k87j5uc8" path="res://assets/Sounds/sfx_jump.ogg" id="4_yw30f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
+size = Vector2(36, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
+size = Vector2(48, 58)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_jump_sfx")]
+script = ExtResource("1_rkbax")
+_jump_sfx = NodePath("SFX/JumpSFX")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_oul6g")
+animation = &"duck"
+
+[node name="StandCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24.5)
+shape = SubResource("RectangleShape2D_kqu6x")
+
+[node name="DuckCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_g1dw6")
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("_player", "_animated_sprite", "_duck_collider", "_stand_collider")]
+script = ExtResource("3_g1dw6")
+_player = NodePath("..")
+_animated_sprite = NodePath("../AnimatedSprite2D")
+_duck_collider = NodePath("../DuckCollisionShape")
+_stand_collider = NodePath("../StandCollisionShape")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_yw30f")
