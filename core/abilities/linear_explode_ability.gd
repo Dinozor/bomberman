@@ -5,17 +5,14 @@ extends Ability
 @export var fire_scene: PackedScene
 
 
-func execute(context: AbilityContext = null) -> void:
-	if not context:
-		printerr("Ability must have context")
-		return
-	# explosion animation
-	# get surrounding tiles in allowed directions
-	# spawn at those tiles Fire projectiles/sprites etc.
-	# projectiles can have their own ability to damager whatever they touch
-	# finish ability
-	var map: TileMapLayer = context.level_tilemap
-	var position: Vector2i = context.position
+func execute(
+	_owner: Player = null,
+	target_position: Vector2 = Vector2.ZERO,
+	_target_object: Node2D = null,
+) -> void:
+	var map: TileMapLayer = _level.map
+	var local_map: Vector2 = map.to_local(target_position)
+	var position: Vector2i = map.local_to_map(local_map)
 	prints("EXPLODE POSITION", position)
 
 	for cell_x in range(position.x + 1, position.x + distance):
@@ -51,15 +48,16 @@ func _update_cell(cell_pos: Vector2i, map: TileMapLayer) -> bool:
 		prints("DESTRUCTION!", cell_pos)
 
 		var fire: Node2D = fire_scene.instantiate()
-		map.add_child(fire)
-		fire.position = map.map_to_local(cell_pos)
+		_level.object_holder.add_child(fire)
+		fire.global_position = map.to_global(map.map_to_local(cell_pos))
 
 		return true
 	else:
 		# spawn fire particle
 		var fire: Node2D = fire_scene.instantiate()
-		map.add_child(fire)
-		fire.position = map.map_to_local(cell_pos)
+		_level.object_holder.add_child(fire)
+		fire.global_position = map.to_global(map.map_to_local(cell_pos))
+
 		prints("Boom!", cell_pos)
 
 	return false

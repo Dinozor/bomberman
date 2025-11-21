@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 @export var _speed: float = 200.0
 @export var _abilities: Array[Ability]
-@export var _map: TileMapLayer
 
 
 func _ready() -> void:
@@ -21,12 +20,7 @@ func _physics_process(delta: float) -> void:
 
 
 func explode() -> void:
-	var context: AbilityContext = AbilityContext.new()
-	context.level_tilemap = _map
-	var local: Vector2 = _map.to_local(global_position)
-	context.position = _map.local_to_map(local)
-
 	for ability in _abilities:
-		ability.execute(context)
+		ability.execute(null, global_position)
 
 	queue_free()

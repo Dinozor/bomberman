@@ -1,0 +1,13 @@
+class_name Level
+extends Node
+
+@export var map: TileMapLayer
+@export var players: Array[Player]
+@export var bomb_holder: Node
+@export var object_holder: Node
+
+var _game_manager: GameManager = GameManager
+
+
+func _ready() -> void:
+	_game_manager.start(self)
