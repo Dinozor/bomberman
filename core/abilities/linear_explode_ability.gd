@@ -14,25 +14,28 @@ func execute(
 	var local_map: Vector2 = map.to_local(target_position)
 	var position: Vector2i = map.local_to_map(local_map)
 	prints("EXPLODE POSITION", position)
+	var should_stop: bool = _update_cell(position, map)
+	if should_stop:
+		return
 
 	for cell_x in range(position.x + 1, position.x + distance):
 		var cell_pos: Vector2i = Vector2i(cell_x, position.y)
-		var should_stop: bool = _update_cell(cell_pos, map)
+		should_stop = _update_cell(cell_pos, map)
 		if should_stop:
 			break
 	for cell_x in range(position.x - 1, position.x - distance, -1):
 		var cell_pos: Vector2i = Vector2i(cell_x, position.y)
-		var should_stop: bool = _update_cell(cell_pos, map)
+		should_stop = _update_cell(cell_pos, map)
 		if should_stop:
 			break
 	for cell_y in range(position.y + 1, position.y + distance):
 		var cell_pos: Vector2i = Vector2i(position.x, cell_y)
-		var should_stop: bool = _update_cell(cell_pos, map)
+		should_stop = _update_cell(cell_pos, map)
 		if should_stop:
 			break
 	for cell_y in range(position.y - 1, position.y - distance, -1):
 		var cell_pos: Vector2i = Vector2i(position.x, cell_y)
-		var should_stop: bool = _update_cell(cell_pos, map)
+		should_stop = _update_cell(cell_pos, map)
 		if should_stop:
 			break
 

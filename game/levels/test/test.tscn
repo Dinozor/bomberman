@@ -31,8 +31,4 @@ zoom = Vector2(0.59, 0.59)
 
 [node name="Bombs" type="Node" parent="."]
 
-[node name="Bomb" parent="Bombs" node_paths=PackedStringArray("_map") instance=ExtResource("3_x753g")]
-position = Vector2(96, 448)
-_map = NodePath("../../TileMapLayer")
-
 [node name="Objects" type="Node" parent="."]
