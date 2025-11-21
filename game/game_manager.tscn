@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxyjyy2tarxnj"]
+
+[ext_resource type="Script" uid="uid://biafud8yu6hpr" path="res://core/game_manager.gd" id="1_u4isy"]
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_u4isy"]
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("1_u4isy")
+audio_stream_player = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPolyphonic_u4isy")
+autoplay = true
+bus = &"Sfx"
