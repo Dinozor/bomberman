@@ -1,5 +1,5 @@
-class_name JumpAbility
-extends Ability
+class_name JumpAction
+extends Action
 
 @export var character: CharacterBody2D
 @export var jump_speed: float = 400.0

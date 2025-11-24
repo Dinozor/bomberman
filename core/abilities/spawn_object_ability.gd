@@ -2,12 +2,15 @@ class_name SpawnObjectAbility
 extends Ability
 
 @export var object_to_spawn: PackedScene
+@export var spawn_point: Node2D
 
 
 func execute(
-	_player: Player = null, target_position: Vector2 = Vector2.ZERO, _target_object: Node2D = null
+	_target_position: Vector2 = Vector2.ZERO,
+	# _player: Player = null, target_position: Vector2 = Vector2.ZERO, _target_object: Node2D = null
 ) -> void:
 	var map: TileMapLayer = _level.map
+	var target_position: Vector2 = spawn_point.global_position
 	var local_point: Vector2 = map.to_local(target_position)
 	var map_point: Vector2i = map.local_to_map(local_point)
 

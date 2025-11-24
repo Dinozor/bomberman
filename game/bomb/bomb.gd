@@ -1,12 +1,12 @@
 class_name Bomb
 extends CharacterBody2D
 
-@export var _speed: float = 200.0
+# @export var _speed: float = 200.0
 @export var _abilities: Array[Ability]
 
 
 func _ready() -> void:
-	velocity.x = _speed
+	# velocity.x = _speed
 	await get_tree().create_timer(3.0).timeout
 	explode()
 
@@ -21,6 +21,6 @@ func _physics_process(delta: float) -> void:
 
 func explode() -> void:
 	for ability in _abilities:
-		ability.execute(null, global_position)
+		ability.execute(global_position)
 
 	queue_free()

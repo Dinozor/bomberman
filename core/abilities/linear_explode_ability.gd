@@ -6,9 +6,8 @@ extends Ability
 
 
 func execute(
-	_owner: Player = null,
 	target_position: Vector2 = Vector2.ZERO,
-	_target_object: Node2D = null,
+	# _target_object: Node2D = null,
 ) -> void:
 	var map: TileMapLayer = _level.map
 	var local_map: Vector2 = map.to_local(target_position)
@@ -43,24 +42,17 @@ func execute(
 
 
 func _update_cell(cell_pos: Vector2i, map: TileMapLayer) -> bool:
+	var fire: Node2D = fire_scene.instantiate()
+	_level.object_holder.add_child(fire)
+	fire.global_position = map.to_global(map.map_to_local(cell_pos))
+
 	var cell: TileData = map.get_cell_tile_data(cell_pos)
 	if cell:
 		# check if destructable
-		map.set_cell(cell_pos)
-
-		prints("DESTRUCTION!", cell_pos)
-
-		var fire: Node2D = fire_scene.instantiate()
-		_level.object_holder.add_child(fire)
-		fire.global_position = map.to_global(map.map_to_local(cell_pos))
+		if cell.get_custom_data("destructable"):
+			map.set_cell(cell_pos)
+			prints("DESTRUCTION!", cell_pos)
 
 		return true
-	else:
-		# spawn fire particle
-		var fire: Node2D = fire_scene.instantiate()
-		_level.object_holder.add_child(fire)
-		fire.global_position = map.to_global(map.map_to_local(cell_pos))
-
-		prints("Boom!", cell_pos)
 
 	return false

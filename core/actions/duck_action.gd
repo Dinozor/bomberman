@@ -1,8 +1,9 @@
-class_name DuckAbility
-extends Ability
+class_name DuckAction
+extends Action
 
 @export var character: CharacterBody2D
 @export var _action_name: StringName = &"duck"
+@export var _duck_speed_modifier: float = 2.0
 @export var _duck_collider: CollisionShape2D
 @export var _stand_collider: CollisionShape2D
 
@@ -16,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not _duck_collider.disabled:
-		character.velocity.x -= character.velocity.x / 2.0 * delta
+		character.velocity.x -= character.velocity.x * _duck_speed_modifier * delta
 
 
 func _unhandled_input(event: InputEvent) -> void:

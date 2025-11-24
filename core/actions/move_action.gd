@@ -1,5 +1,5 @@
-class_name MoveAbility
-extends Ability
+class_name MoveAction
+extends Action
 
 @export var character: Player
 @export var acceleration: float = 150.0
@@ -25,9 +25,9 @@ func _walk_right(delta: float) -> void:
 	if character.velocity.x >= max_speed:
 		return
 
-	if character.is_on_floor():
-		var new_velocity_x: float = character.velocity.x + acceleration * delta
-		character.velocity.x = min(max_speed, new_velocity_x)
+	# if character.is_on_floor():
+	var new_velocity_x: float = character.velocity.x + acceleration * delta
+	character.velocity.x = min(max_speed, new_velocity_x)
 
 
 func _walk_left(delta: float) -> void:
@@ -35,6 +35,6 @@ func _walk_left(delta: float) -> void:
 	if character.velocity.x <= -max_speed:
 		return
 
-	if character.is_on_floor():
-		var new_velocity_x: float = character.velocity.x - acceleration * delta
-		character.velocity.x = max(-max_speed, new_velocity_x)
+	# if character.is_on_floor():
+	var new_velocity_x: float = character.velocity.x - acceleration * delta
+	character.velocity.x = max(-max_speed, new_velocity_x)
