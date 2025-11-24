@@ -1,10 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-@export var _speed: float = 150.0
+@export var _friction: float = 100.0
 
-@export var _ability: Ability
-@export var _jump_ability: Ability
 @export var _spawn_point: Node2D
 @export var _audio_player: AudioStreamPlayer2D
 
@@ -19,17 +17,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y += _gravity * delta
-	velocity.x = Input.get_axis(&"move_left", &"move_right") * _speed
-
+	if is_on_floor():
+		if velocity.x > 0.0:
+			velocity.x = max(0.0, velocity.x - _friction * delta)
+		else:
+			velocity.x = min(0.0, velocity.x + _friction * delta)
 	move_and_slide()
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"jump"):
-		_jump_ability.execute(self)
-
-	if _ability and event.is_action_pressed(&"action"):
-		_ability.execute(self, get_spawn_point())
 
 
 func get_spawn_point() -> Vector2:

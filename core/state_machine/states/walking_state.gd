@@ -1,10 +1,10 @@
-class_name IdleState
+class_name WalkingState
 extends State
 
+@export var _player: Player
 @export var _animated_sprite: AnimatedSprite2D
-@export var _duck_state: State
+@export var _idle_state: State
 @export var _jump_state: State
-@export var _move_state: State
 
 var _state_machine: StateMachine
 
@@ -18,24 +18,30 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed(&"duck"):
-		_state_machine.transition_to(_duck_state)
-
 	if Input.is_action_pressed(&"move_left"):
-		_state_machine.transition_to(_move_state)
-
+		_player.execute_left_ability()
 	if Input.is_action_pressed(&"move_right"):
-		_state_machine.transition_to(_move_state)
+		_player.execute_right_ability()
 
-	if Input.is_action_pressed(&"jump"):
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released(&"move_left") and not Input.is_action_pressed(&"move_right"):
+		_state_machine.transition_to(_idle_state)
+		return
+
+	if event.is_action_released(&"move_right") and not Input.is_action_pressed(&"move_left"):
+		_state_machine.transition_to(_idle_state)
+		return
+	if event.is_action_pressed(&"jump"):
 		_state_machine.transition_to(_jump_state)
 
 
 func enter() -> void:
+	_animated_sprite.play(&"walk")
 	set_process_unhandled_input(true)
 	set_physics_process(true)
-	_animated_sprite.play(&"idle")
 
 
 func exit() -> void:
 	set_process_unhandled_input(false)
+	set_physics_process(false)

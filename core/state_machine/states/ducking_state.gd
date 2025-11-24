@@ -5,6 +5,7 @@ extends State
 @export var _duck_collider: CollisionShape2D
 @export var _stand_collider: CollisionShape2D
 @export var _idle_state: State
+
 var _state_machine: StateMachine
 
 
