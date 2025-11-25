@@ -3,6 +3,7 @@ extends Ability
 
 @export var distance: int = 1
 @export var fire_scene: PackedScene
+@export var ability: Ability
 
 
 func execute(
@@ -44,7 +45,8 @@ func execute(
 func _update_cell(cell_pos: Vector2i, map: TileMapLayer) -> bool:
 	var fire: Node2D = fire_scene.instantiate()
 	_level.object_holder.add_child(fire)
-	fire.global_position = map.to_global(map.map_to_local(cell_pos))
+	var pos: Vector2 = map.to_global(map.map_to_local(cell_pos))
+	fire.global_position = pos
 
 	var cell: TileData = map.get_cell_tile_data(cell_pos)
 	if cell:
@@ -52,6 +54,8 @@ func _update_cell(cell_pos: Vector2i, map: TileMapLayer) -> bool:
 		if cell.get_custom_data("destructable"):
 			map.set_cell(cell_pos)
 			prints("DESTRUCTION!", cell_pos)
+			if ability:
+				ability.execute(pos)
 
 		return true
 

@@ -53,7 +53,7 @@ metadata/_custom_type_script = "uid://cjrij260ef8n1"
 [node name="MoveAction" type="Node" parent="ActionController" node_paths=PackedStringArray("character")]
 script = ExtResource("4_j0mij")
 character = NodePath("../..")
-acceleration = 800.0
+acceleration = 1000.0
 max_speed = 1000.0
 metadata/_custom_type_script = "uid://dclg8w80eipfa"
 
@@ -87,6 +87,6 @@ metadata/_custom_type_script = "uid://c6ad0t8k1r1ka"
 
 [node name="SpawnObjectAbility" type="Node" parent="Abilities" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("3_n270p")
-object_to_spawn = ExtResource("2_uv2nh")
+object_to_spawns = Array[PackedScene]([ExtResource("2_uv2nh")])
 spawn_point = NodePath("../../SpawnPoint")
 metadata/_custom_type_script = "uid://vg4hoyf6ful4"

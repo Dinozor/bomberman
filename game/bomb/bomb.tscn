@@ -1,26 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdevd7h6gv77g"]
+[gd_scene load_steps=8 format=3 uid="uid://cdevd7h6gv77g"]
 
 [ext_resource type="Script" uid="uid://cmqphkk505fq4" path="res://game/bomb/bomb.gd" id="1_en0bh"]
 [ext_resource type="Texture2D" uid="uid://cujj75kfu4uxu" path="res://game/bomb/bomb.png" id="1_fduqh"]
 [ext_resource type="PackedScene" uid="uid://t6axiobvl53q" path="res://game/fire/fire.tscn" id="3_3s6ii"]
 [ext_resource type="Script" uid="uid://bnyabpe3o7uue" path="res://core/abilities/linear_explode_ability.gd" id="3_f3gsr"]
+[ext_resource type="Texture2D" uid="uid://derxn8onhg1js" path="res://game/bomb/bomb_active.png" id="3_njdfk"]
+[ext_resource type="Script" uid="uid://vg4hoyf6ful4" path="res://core/abilities/spawn_object_ability.gd" id="5_3s6ii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_en0bh"]
 radius = 26.019224
 
-[node name="Bomb" type="CharacterBody2D" node_paths=PackedStringArray("_abilities")]
+[node name="Bomb" type="CharacterBody2D" node_paths=PackedStringArray("_bomb_sprite", "_active_bomb_sprite", "_abilities")]
 script = ExtResource("1_en0bh")
+_bomb_sprite = NodePath("BombSprite2D")
+_active_bomb_sprite = NodePath("BombActiveSprite2D")
 _abilities = [NodePath("LinearExplodeAbility")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BombSprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, -6)
 texture = ExtResource("1_fduqh")
+
+[node name="BombActiveSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-4, -6)
+texture = ExtResource("3_njdfk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_en0bh")
 
-[node name="LinearExplodeAbility" type="Node" parent="."]
+[node name="LinearExplodeAbility" type="Node" parent="." node_paths=PackedStringArray("ability")]
 script = ExtResource("3_f3gsr")
 distance = 7
 fire_scene = ExtResource("3_3s6ii")
+ability = NodePath("SpawnObjectAbility")
 metadata/_custom_type_script = "uid://bnyabpe3o7uue"
+
+[node name="SpawnObjectAbility" type="Node" parent="LinearExplodeAbility"]
+script = ExtResource("5_3s6ii")
+metadata/_custom_type_script = "uid://vg4hoyf6ful4"
