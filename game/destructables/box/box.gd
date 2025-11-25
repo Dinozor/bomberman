@@ -13,13 +13,14 @@ func _ready() -> void:
 
 
 func destroy() -> void:
+	queue_free()
 	if objects_to_spawn.is_empty():
 		return
 	var to_spawn: PackedScene = objects_to_spawn.pick_random()
 	if to_spawn:
 		var object: Node2D = to_spawn.instantiate()
 		_level.object_holder.add_child(object)
-	queue_free()
+		object.global_position = global_position
 
 
 func _on_level_changed(level: Level) -> void:

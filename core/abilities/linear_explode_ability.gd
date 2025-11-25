@@ -61,7 +61,8 @@ func _update_cell(cell_pos: Vector2i, map: StupidTilemap) -> bool:
 			return true
 	if source_id == 1:
 		var scene_cell: Node2D = map.get_scene_at_cell(cell_pos)
-		if scene_cell and scene_cell.has_method("destroy"):
+		print_debug(scene_cell)
+		if scene_cell and scene_cell.has_method(&"destroy"):
 			scene_cell.destroy()
 			return true
 
