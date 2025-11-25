@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 @export var _spawn_point: Node2D
 @export var _audio_player: AudioStreamPlayer2D
+@export var _bomb_range: int = 2
 
 var _gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", 980.0)
 var _is_facing_left: bool = false
@@ -33,6 +34,14 @@ func _physics_process(delta: float) -> void:
 
 func get_spawn_point() -> Vector2:
 	return _spawn_point.global_position
+
+
+func get_bomb_range() -> int:
+	return _bomb_range
+
+
+func set_bomb_range(bomb_range: int) -> void:
+	_bomb_range = bomb_range
 
 
 func set_direction(direction: float) -> void:

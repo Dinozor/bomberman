@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq327msc7u6mt"]
+
+[ext_resource type="Script" uid="uid://ckvtjchomq3bj" path="res://game/buffs/bomb_range/bomb_range.gd" id="1_vqwwp"]
+[ext_resource type="Texture2D" uid="uid://ychie6twrksd" path="res://game/buffs/bomb_range/star.png" id="2_ya3mx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foq27"]
+size = Vector2(64, 64)
+
+[node name="BombRange" type="Area2D"]
+script = ExtResource("1_vqwwp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_foq27")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ya3mx")

@@ -8,6 +8,7 @@ extends RigidBody2D
 @export var auto_activate: bool = true
 var _time_left: float = timer
 var _time_to_blink: float = 1.0
+var _character: Character
 
 
 func _ready() -> void:
@@ -27,9 +28,8 @@ func _process(delta: float) -> void:
 		explode()
 
 
-func _blink() -> void:
-	_bomb_sprite.visible = !_bomb_sprite.visible
-	_active_bomb_sprite.visible = !_active_bomb_sprite.visible
+func set_character(character: Character) -> void:
+	_character = character
 
 
 func activate() -> void:
@@ -41,6 +41,11 @@ func activate() -> void:
 
 func explode() -> void:
 	for ability in _abilities:
-		ability.execute(global_position)
+		ability.execute(global_position, _character)
 
 	queue_free()
+
+
+func _blink() -> void:
+	_bomb_sprite.visible = !_bomb_sprite.visible
+	_active_bomb_sprite.visible = !_active_bomb_sprite.visible

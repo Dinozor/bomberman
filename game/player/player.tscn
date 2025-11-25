@@ -67,8 +67,9 @@ _duck_collider = NodePath("../../DuckCollisionShape")
 _stand_collider = NodePath("../../StandCollisionShape")
 metadata/_custom_type_script = "uid://brk7athj2mu2y"
 
-[node name="ActiveAction" type="Node" parent="ActionController" node_paths=PackedStringArray("ability")]
+[node name="ActiveAction" type="Node" parent="ActionController" node_paths=PackedStringArray("character", "ability")]
 script = ExtResource("8_5ghna")
+character = NodePath("../..")
 ability = NodePath("../../Abilities/SpawnObjectAbility")
 metadata/_custom_type_script = "uid://b22k8fgn34mv6"
 

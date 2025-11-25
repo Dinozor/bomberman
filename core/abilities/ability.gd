@@ -14,6 +14,7 @@ func _init() -> void:
 
 @abstract func execute(
 	_target_position: Vector2 = Vector2.ZERO,
+	character: Character = null,
 	# _target_object: Node2D = null,
 ) -> void
 

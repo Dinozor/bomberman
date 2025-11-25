@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3hoyepuni6kx" path="res://game/destructables/box/box.gd" id="1_8ejk7"]
 [ext_resource type="Texture2D" uid="uid://bovyps6a7yjmk" path="res://game/destructables/box/block_plank.png" id="1_pd06a"]
-[ext_resource type="PackedScene" uid="uid://bq327msc7u6mt" path="res://game/pickable_holder.tscn" id="2_s0047"]
+[ext_resource type="PackedScene" uid="uid://bq327msc7u6mt" path="res://game/buffs/bomb_range/bomb_range.tscn" id="2_s0047"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1l3n"]
 size = Vector2(64, 64)
