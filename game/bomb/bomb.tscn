@@ -11,7 +11,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_en0bh"]
 radius = 26.019224
 
-[node name="Bomb" type="CharacterBody2D" node_paths=PackedStringArray("_bomb_sprite", "_active_bomb_sprite", "_abilities")]
+[node name="Bomb" type="RigidBody2D" node_paths=PackedStringArray("_bomb_sprite", "_active_bomb_sprite", "_abilities")]
+freeze = true
 script = ExtResource("1_en0bh")
 _bomb_sprite = NodePath("BombSprite2D")
 _active_bomb_sprite = NodePath("BombActiveSprite2D")
@@ -31,7 +32,7 @@ shape = SubResource("CircleShape2D_en0bh")
 
 [node name="LinearExplodeAbility" type="Node" parent="." node_paths=PackedStringArray("ability")]
 script = ExtResource("3_f3gsr")
-distance = 7
+distance = 3
 fire_scene = ExtResource("3_3s6ii")
 ability = NodePath("SpawnObjectAbility")
 metadata/_custom_type_script = "uid://bnyabpe3o7uue"

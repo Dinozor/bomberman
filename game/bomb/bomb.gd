@@ -1,7 +1,6 @@
 class_name Bomb
-extends CharacterBody2D
+extends RigidBody2D
 
-# @export var _speed: float = 200.0
 @export var timer: float = 3.0
 @export var _bomb_sprite: Sprite2D
 @export var _active_bomb_sprite: Sprite2D
@@ -16,14 +15,6 @@ func _ready() -> void:
 	if auto_activate:
 		await get_tree().create_timer(1.0).timeout
 		activate()
-
-
-func _physics_process(delta: float) -> void:
-	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.bounce(collision.get_normal())
-		if collision.get_collider().has_method("hit"):
-			collision.get_collider().hit()
 
 
 func _process(delta: float) -> void:

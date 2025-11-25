@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bovyps6a7yjmk"
-path="res://.godot/imported/block_plank.png-58f298fd95aa1bc571142abab3a95fca.ctex"
+uid="uid://bloj5vxciaqfx"
+path="res://.godot/imported/block_planks.png-d7a30efc47deebcacb3e343eed0a3fa7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Tiles/Default/block_plank.png"
-dest_files=["res://.godot/imported/block_plank.png-58f298fd95aa1bc571142abab3a95fca.ctex"]
+source_file="res://game/destructables/box/block_planks.png"
+dest_files=["res://.godot/imported/block_planks.png-d7a30efc47deebcacb3e343eed0a3fa7.ctex"]
 
 [params]
 

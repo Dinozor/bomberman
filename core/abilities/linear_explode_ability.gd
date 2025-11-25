@@ -8,12 +8,10 @@ extends Ability
 
 func execute(
 	target_position: Vector2 = Vector2.ZERO,
-	# _target_object: Node2D = null,
 ) -> void:
-	var map: TileMapLayer = _level.map
+	var map: StupidTilemap = _level.map
 	var local_map: Vector2 = map.to_local(target_position)
 	var position: Vector2i = map.local_to_map(local_map)
-	prints("EXPLODE POSITION", position)
 	var should_stop: bool = _update_cell(position, map)
 	if should_stop:
 		return
@@ -42,21 +40,29 @@ func execute(
 	return
 
 
-func _update_cell(cell_pos: Vector2i, map: TileMapLayer) -> bool:
+func _update_cell(cell_pos: Vector2i, map: StupidTilemap) -> bool:
 	var fire: Node2D = fire_scene.instantiate()
 	_level.object_holder.add_child(fire)
 	var pos: Vector2 = map.to_global(map.map_to_local(cell_pos))
 	fire.global_position = pos
+	var source_id: int = map.get_cell_source_id(cell_pos)
 
-	var cell: TileData = map.get_cell_tile_data(cell_pos)
-	if cell:
-		# check if destructable
-		if cell.get_custom_data("destructable"):
-			map.set_cell(cell_pos)
-			prints("DESTRUCTION!", cell_pos)
-			if ability:
-				ability.execute(pos)
+	if source_id == -1:
+		return false
+	if source_id == 0:
+		var cell: TileData = map.get_cell_tile_data(cell_pos)
+		if cell:
+			# check if destructable
+			if cell.get_custom_data("destructable"):
+				map.set_cell(cell_pos)
+				if ability:
+					ability.execute(pos)
 
-		return true
+			return true
+	if source_id == 1:
+		var scene_cell: Node2D = map.get_scene_at_cell(cell_pos)
+		if scene_cell and scene_cell.has_method("destroy"):
+			scene_cell.destroy()
+			return true
 
 	return false

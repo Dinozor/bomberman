@@ -1,7 +1,9 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://2flpgwbmlw8y"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://2flpgwbmlw8y"]
 
 [ext_resource type="Texture2D" uid="uid://x21i0d1l3rjs" path="res://assets/Spritesheets/spritesheet-tiles-default.png" id="1_6c44b"]
+[ext_resource type="PackedScene" uid="uid://bq327msc7u6mt" path="res://game/pickable_holder.tscn" id="2_doawp"]
 [ext_resource type="Texture2D" uid="uid://c3g5uu1dcw3hc" path="res://assets/Spritesheets/spritesheet-enemies-default.png" id="2_f6u0f"]
+[ext_resource type="PackedScene" uid="uid://4fr61r0ntj0a" path="res://game/destructables/box/box.tscn" id="3_5qljn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f6u0f"]
 resource_name = "default"
@@ -628,6 +630,11 @@ texture_region_size = Vector2i(64, 64)
 16:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 17:17/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5qljn"]
+resource_name = "destructables"
+scenes/1/scene = ExtResource("2_doawp")
+scenes/2/scene = ExtResource("3_5qljn")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_doawp"]
 resource_name = "enemies"
 texture = ExtResource("2_f6u0f")
@@ -700,3 +707,4 @@ custom_data_layer_0/name = "destructable"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_f6u0f")
 sources/2 = SubResource("TileSetAtlasSource_doawp")
+sources/1 = SubResource("TileSetScenesCollectionSource_5qljn")

@@ -23,6 +23,12 @@ GameManager="*res://game/game_manager.tscn"
 
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "red"
+}
+
 [input]
 
 move_left={
