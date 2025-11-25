@@ -40,7 +40,7 @@ func play_sfx(stream: AudioStream) -> void:
 
 
 func character_died(character_name: String) -> void:
-	if character_name == "YellowCharacter":
+	if character_name == "YellowPlayer":
 		yellow_won_label.show()
 	else:
 		green_won_label.show()
@@ -49,3 +49,6 @@ func character_died(character_name: String) -> void:
 
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
+	green_won_label.hide()
+	yellow_won_label.hide()
+	end_screen.hide()

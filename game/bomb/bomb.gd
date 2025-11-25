@@ -44,8 +44,8 @@ func activate() -> void:
 func explode() -> void:
 	if _character:
 		_character.play_sfx(_explode_sound)
-	for ability in _abilities:
-		ability.execute(global_position, _character)
+		for ability in _abilities:
+			ability.execute(global_position, _character)
 
 	queue_free()
 
