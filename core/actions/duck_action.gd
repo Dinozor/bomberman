@@ -9,7 +9,7 @@ extends Action
 
 
 func _ready() -> void:
-	if not character and owner is Player:
+	if not character and owner is Character:
 		character = owner
 	_stand_collider.disabled = false
 	_duck_collider.disabled = true

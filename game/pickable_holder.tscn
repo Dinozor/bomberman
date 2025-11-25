@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq327msc7u6mt"]
+[gd_scene load_steps=3 format=3 uid="uid://bq327msc7u6mt"]
+
+[ext_resource type="Texture2D" uid="uid://c3xfq2tqo7fnh" path="res://assets/Vector/Tiles/lock_green.svg" id="1_05p4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_foq27"]
 size = Vector2(64, 64)
@@ -7,3 +9,6 @@ size = Vector2(64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_foq27")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_05p4m")

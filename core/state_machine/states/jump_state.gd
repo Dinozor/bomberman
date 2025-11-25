@@ -1,7 +1,7 @@
 class_name JumpState
 extends State
 
-@export var _player: Player
+@export var _player: Character
 @export var _animated_sprite: AnimatedSprite2D
 @export var _idle_state: State
 @export var _body: CharacterBody2D

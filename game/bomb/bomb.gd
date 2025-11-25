@@ -30,8 +30,8 @@ func _process(delta: float) -> void:
 	_time_left -= delta
 	_time_to_blink -= delta
 	if _time_to_blink <= 0.0:
-		_blink()
 		_time_to_blink = _time_left / timer
+		_blink()
 	if _time_left <= 0.0:
 		explode()
 
@@ -43,6 +43,7 @@ func _blink() -> void:
 
 func activate() -> void:
 	_time_left = timer
+	_time_to_blink = _time_left / timer
 	_blink()
 	set_process(true)
 

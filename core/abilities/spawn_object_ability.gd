@@ -7,7 +7,7 @@ extends Ability
 
 func execute(
 	_target_position: Vector2 = Vector2.ZERO,
-	# _player: Player = null, target_position: Vector2 = Vector2.ZERO, _target_object: Node2D = null
+	# _player: Character = null, target_position: Vector2 = Vector2.ZERO, _target_object: Node2D = null
 ) -> void:
 	if object_to_spawns.is_empty():
 		return
@@ -25,8 +25,11 @@ func execute(
 		return
 
 	local_point = map.map_to_local(map_point)
+	var to_spawn: PackedScene = object_to_spawns.pick_random()
+	if not to_spawn:
+		return
 
-	var object: Node2D = object_to_spawns.pick_random().instantiate()
+	var object: Node2D = to_spawn.instantiate()
 	var holder: Node = _level.bomb_holder
 	holder.add_child(object)
 	object.global_position = map.to_global(local_point)

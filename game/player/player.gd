@@ -1,7 +1,10 @@
-class_name Player
+class_name Character
 extends CharacterBody2D
 
-@export var _friction: float = 100.0
+@export var _friction: float = 1000.0
+@export var _air_friction: float = 100.0
+@export var _acceleration: float = 800.0
+@export var _speed: float = 200.0
 
 @export var _spawn_point: Node2D
 @export var _audio_player: AudioStreamPlayer2D
@@ -9,6 +12,7 @@ extends CharacterBody2D
 var _gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", 980.0)
 var _is_facing_left: bool = false
 var _playback: AudioStreamPlaybackPolyphonic
+var _direction: float = 0.0
 
 
 func _ready() -> void:
@@ -17,16 +21,26 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y += _gravity * delta
-	if is_on_floor():
-		if velocity.x > 0.0:
-			velocity.x = max(0.0, velocity.x - _friction * delta)
+	if _direction != 0.0:
+		velocity.x = move_toward(velocity.x, _direction * _speed, _acceleration * delta)
+	else:
+		if is_on_floor():
+			velocity.x = move_toward(velocity.x, 0.0, _friction * delta)
 		else:
-			velocity.x = min(0.0, velocity.x + _friction * delta)
+			velocity.x = move_toward(velocity.x, 0.0, _air_friction * delta)
 	move_and_slide()
 
 
 func get_spawn_point() -> Vector2:
 	return _spawn_point.global_position
+
+
+func set_direction(direction: float) -> void:
+	_direction = direction
+
+
+func get_direction() -> float:
+	return _direction
 
 
 func look_left() -> void:

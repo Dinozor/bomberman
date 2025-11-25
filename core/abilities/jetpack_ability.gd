@@ -5,7 +5,7 @@ extends Ability
 
 
 func execute(
-	owner: Player = null,
+	owner: Character = null,
 	_target_position: Vector2 = Vector2.ZERO,
 	_target_object: Node2D = null,
 ) -> void:

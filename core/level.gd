@@ -2,7 +2,7 @@ class_name Level
 extends Node
 
 @export var map: TileMapLayer
-@export var players: Array[Player]
+@export var players: Array[Character]
 @export var bomb_holder: Node
 @export var object_holder: Node
 
