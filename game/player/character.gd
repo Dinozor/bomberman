@@ -8,16 +8,23 @@ extends CharacterBody2D
 
 @export var _spawn_point: Node2D
 @export var _audio_player: AudioStreamPlayer2D
+@export var _animated_sprite: AnimatedSprite2D
+@export var _action_holder: Node
 @export var _bomb_range: int = 2
+
+@export var _die_sound: AudioStream
 
 var _gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", 980.0)
 var _is_facing_left: bool = false
 var _playback: AudioStreamPlaybackPolyphonic
 var _direction: float = 0.0
 
+var _game_manager: GameManager
+
 
 func _ready() -> void:
 	_playback = _audio_player.get_stream_playback() as AudioStreamPlaybackPolyphonic
+	_game_manager = GameManager
 
 
 func _physics_process(delta: float) -> void:
@@ -34,6 +41,14 @@ func _physics_process(delta: float) -> void:
 
 func die() -> void:
 	print_debug("DIED", self)
+	_animated_sprite.play(&"hit")
+	if _die_sound:
+		play_sfx(_die_sound)
+	for node in _action_holder.get_children():
+		if node is Action:
+			node.disable()
+	await get_tree().create_timer(1.5).timeout
+	_game_manager.character_died(name)
 	queue_free()
 
 

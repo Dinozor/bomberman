@@ -44,7 +44,7 @@ animations = [{
 "texture": ExtResource("2_j1ray")
 }],
 "loop": true,
-"name": &"hits",
+"name": &"hit",
 "speed": 5.0
 }, {
 "frames": [{

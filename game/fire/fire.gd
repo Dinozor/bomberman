@@ -19,4 +19,6 @@ func _on_body_entered(body: Node2D) -> void:
 			body.explode()
 
 		return
+	if body.is_queued_for_deletion():
+		return
 	body.die()

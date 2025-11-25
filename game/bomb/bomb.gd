@@ -6,6 +6,8 @@ extends RigidBody2D
 @export var _active_bomb_sprite: Sprite2D
 @export var _abilities: Array[Ability]
 @export var auto_activate: bool = true
+@export var _explode_sound: AudioStream
+
 var _time_left: float = timer
 var _time_to_blink: float = 1.0
 var _character: Character
@@ -40,6 +42,8 @@ func activate() -> void:
 
 
 func explode() -> void:
+	if _character:
+		_character.play_sfx(_explode_sound)
 	for ability in _abilities:
 		ability.execute(global_position, _character)
 

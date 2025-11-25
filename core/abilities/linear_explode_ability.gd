@@ -12,7 +12,8 @@ func execute(
 	character: Character = null,
 ) -> void:
 	_character = character
-	_distance = character.get_bomb_range()
+	if _character:
+		_distance = character.get_bomb_range()
 	var map: StupidTilemap = _level.map
 	var local_map: Vector2 = map.to_local(target_position)
 	var position: Vector2i = map.local_to_map(local_map)
