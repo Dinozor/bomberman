@@ -14,4 +14,9 @@ func _on_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print_debug(body)
+	if not body is Character:
+		if body is Bomb:
+			body.explode()
+
+		return
+	body.die()

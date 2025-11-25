@@ -32,6 +32,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func die() -> void:
+	print_debug("DIED", self)
+	queue_free()
+
+
 func get_spawn_point() -> Vector2:
 	return _spawn_point.global_position
 

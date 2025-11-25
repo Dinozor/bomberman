@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=3 uid="uid://b68d08tbj1ael"]
+
+[ext_resource type="Script" uid="uid://bj8xmaclq56sm" path="res://game/player/character.gd" id="1_3cq2g"]
+[ext_resource type="SpriteFrames" uid="uid://b7o1jktgrrced" path="res://game/player/yellow/yellow_character.tres" id="2_xp81q"]
+[ext_resource type="Script" uid="uid://cjrij260ef8n1" path="res://core/abilities/ability_controller.gd" id="3_k3x55"]
+[ext_resource type="Script" uid="uid://dclg8w80eipfa" path="res://core/actions/move_action.gd" id="4_ofqix"]
+[ext_resource type="Script" uid="uid://by8ybibhk7qf2" path="res://core/actions/jump_action.gd" id="5_xek3d"]
+[ext_resource type="AudioStream" uid="uid://bxry0k87j5uc8" path="res://game/player/sfx_jump.ogg" id="6_vh1bd"]
+[ext_resource type="Script" uid="uid://brk7athj2mu2y" path="res://core/actions/duck_action.gd" id="7_gkq26"]
+[ext_resource type="Script" uid="uid://b22k8fgn34mv6" path="res://core/actions/active_action.gd" id="8_7a0hb"]
+[ext_resource type="Script" uid="uid://c6ad0t8k1r1ka" path="res://core/state_machine/player_state_machine.gd" id="9_g0puo"]
+[ext_resource type="Script" uid="uid://vg4hoyf6ful4" path="res://core/abilities/spawn_object_ability.gd" id="10_nd5nd"]
+[ext_resource type="PackedScene" uid="uid://cdevd7h6gv77g" path="res://game/bomb/bomb.tscn" id="11_xvlix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
+size = Vector2(36, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
+size = Vector2(48, 58)
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_5fytw"]
+
+[node name="YellowPlayer" type="CharacterBody2D" node_paths=PackedStringArray("_spawn_point", "_audio_player")]
+script = ExtResource("1_3cq2g")
+_spawn_point = NodePath("SpawnPoint")
+_audio_player = NodePath("AudioStreamPlayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_xp81q")
+animation = &"walk"
+
+[node name="StandCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24.5)
+shape = SubResource("RectangleShape2D_kqu6x")
+
+[node name="DuckCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_g1dw6")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(48, 32)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_5fytw")
+autoplay = true
+bus = &"Sfx"
+
+[node name="ActionController" type="Node" parent="."]
+script = ExtResource("3_k3x55")
+metadata/_custom_type_script = "uid://cjrij260ef8n1"
+
+[node name="MoveAction" type="Node" parent="ActionController" node_paths=PackedStringArray("character")]
+script = ExtResource("4_ofqix")
+character = NodePath("../..")
+_move_left_action_name = &"move_left_2"
+_move_right_action_name = &"move_right_2"
+metadata/_custom_type_script = "uid://dclg8w80eipfa"
+
+[node name="JumpAction" type="Node" parent="ActionController" node_paths=PackedStringArray("character")]
+script = ExtResource("5_xek3d")
+character = NodePath("../..")
+action_name = &"jump_2"
+_sfx = ExtResource("6_vh1bd")
+metadata/_custom_type_script = "uid://by8ybibhk7qf2"
+
+[node name="DuckAction" type="Node" parent="ActionController" node_paths=PackedStringArray("character", "_duck_collider", "_stand_collider")]
+script = ExtResource("7_gkq26")
+character = NodePath("../..")
+_action_name = &"duck_2"
+_duck_collider = NodePath("../../DuckCollisionShape")
+_stand_collider = NodePath("../../StandCollisionShape")
+metadata/_custom_type_script = "uid://brk7athj2mu2y"
+
+[node name="ActiveAction" type="Node" parent="ActionController" node_paths=PackedStringArray("character", "ability")]
+script = ExtResource("8_7a0hb")
+character = NodePath("../..")
+action_name = &"action_2"
+ability = NodePath("../../Abilities/SpawnObjectAbility")
+metadata/_custom_type_script = "uid://b22k8fgn34mv6"
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("_player", "_animated_sprite", "_duck_collider")]
+script = ExtResource("9_g0puo")
+_player = NodePath("..")
+_animated_sprite = NodePath("../AnimatedSprite2D")
+_duck_collider = NodePath("../DuckCollisionShape")
+metadata/_custom_type_script = "uid://c6ad0t8k1r1ka"
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="SpawnObjectAbility" type="Node" parent="Abilities" node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("10_nd5nd")
+object_to_spawns = Array[PackedScene]([ExtResource("11_xvlix")])
+spawn_point = NodePath("../../SpawnPoint")
+metadata/_custom_type_script = "uid://vg4hoyf6ful4"
